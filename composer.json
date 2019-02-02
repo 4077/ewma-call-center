@@ -1,0 +1,16 @@
+{
+    "name": "fed/ewma-call-center",
+    "type": "ewma-module",
+    "description": "ewma call center",
+    "authors": [
+        {
+            "name": "fed",
+            "email": "ewmafw@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "fed/ewma-module-installer-plugin": "~0.0.1",
+        "peppeocchi/php-cron-scheduler": "2.*"
+    }
+}
