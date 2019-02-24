@@ -185,7 +185,16 @@ class Xhr extends \Controller
     public function duplicate()
     {
         if ($call = $this->unxpackModel('call')) {
-            \ewma\callCenter\models\Call::create($call->toArray());
+            $newCallData = $call->toArray();
+
+            $newCall = \ewma\callCenter\models\Call::create($newCallData);
+
+            $newCall->position = $call->position + 5;
+            $newCall->save();
+
+            \DB::statement('SET @i := 0;');
+
+            $call->cat->calls()->orderBy('position')->update(['position' => \DB::raw('(@i := @i + 10)')]);
 
             $this->e('ewma/callCenter/calls/create', ['cat_id' => $call->cat->id])->trigger(['call' => $call]);
         }
@@ -324,8 +333,8 @@ class Xhr extends \Controller
 
             $this->c('^~output:reload');
 
-            $this->jquery(".show_output_button")->removeClass('pressed');
-            $this->jquery(".show_output_button[call_id='" . $call->id . "']")->addClass('pressed');
+            $this->jquery(".output_button")->removeClass('pressed');
+            $this->jquery(".output_button[call_id='" . $call->id . "']")->addClass('pressed');
         }
     }
 }

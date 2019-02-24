@@ -16,9 +16,10 @@ class Xhr extends \Controller
 
             $s['selected_cat_id'] = $cat->id;
 
-            $this->c('<<:reload');
-            $this->c('<<<calls:reload');
-            $this->c('<<<output:reload');
+            $this->c('~:reload');
+//            $this->c('<<:reload');
+//            $this->c('<<<calls:reload');
+//            $this->c('<<<output:reload');
         }
     }
 

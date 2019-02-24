@@ -1,0 +1,65 @@
+// head {
+@import "../../../../../../modules-vendor/fed/js-jquery/ui/-/less/icons.less";
+
+@__nodeId__: ~"ewma_callCenter__main_cats_cp";
+// }
+
+.@{__nodeId__} {
+    @buttonSize: 28px;
+
+    cursor: pointer;
+    min-height: @buttonSize;
+    position: relative;
+
+    height: @buttonSize;
+    background-color: #404040;
+
+    .buttons {
+        display: none;
+        position: absolute;
+        right: 0;
+        z-index: 2;
+
+        .button {
+            cursor: pointer;
+            float: left;
+            width: @buttonSize;
+            height: @buttonSize;
+            background-color: #404040;
+
+            .icon {
+                float: left;
+                margin: (@buttonSize - 16px) / 2;
+                width: 16px;
+                height: 16px;
+                background: url("../../images/icons_ffffff.png") 16px 16px;
+            }
+
+            &.hover {
+                background-color: #5D5D5D;
+            }
+
+            &.exchange {
+
+                .icon {
+                    .ui-icon-transfer-e-w;
+                }
+            }
+
+            &.create {
+
+                .icon {
+                    .ui-icon-plus;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        background-color: #404040;
+        
+        .buttons {
+            display: block;
+        }
+    }
+}

@@ -39,8 +39,9 @@ class Main extends \Controller
         }
 
         $v->assign([
-                       'COLOR_CLASS'        => $call->require_confirmation ? 'red' : 'blue',
-                       'NAME'               => $this->c('\std\ui txt:view', [
+                       'CALL_WIDTH'                         => $this->s('^:calls_width') - 65,
+                       'COLOR_CLASS'      => $call->require_confirmation ? 'red' : 'blue',
+                       'NAME'             => $this->c('\std\ui txt:view', [
                            'path'                => '>xhr:rename',
                            'data'                => [
                                'call' => $callXPack
@@ -52,7 +53,7 @@ class Main extends \Controller
                            'content'             => $content,
                            'contentOnInit'       => $call->name
                        ]),
-                       'RENAME_BUTTON'      => $this->c('\std\ui tag:view', [
+                       'RENAME_BUTTON'    => $this->c('\std\ui tag:view', [
                            'attrs'   => [
                                'class' => 'rename button',
                                'hover' => 'hover',
@@ -60,7 +61,7 @@ class Main extends \Controller
                            ],
                            'content' => '<div class="icon"></div>'
                        ]),
-                       'SETTINGS_BUTTON'    => $this->c('\std\ui button:view', [
+                       'SETTINGS_BUTTON'  => $this->c('\std\ui button:view', [
                            'path'    => '>xhr:toggleSettingsVisible|',
                            'data'    => [
                                'call' => $callXPack
@@ -69,7 +70,7 @@ class Main extends \Controller
                            'title'   => 'Настройки',
                            'content' => '<div class="icon"></div>'
                        ]),
-                       'DUPLICATE_BUTTON'   => $this->c('\std\ui button:view', [
+                       'DUPLICATE_BUTTON' => $this->c('\std\ui button:view', [
                            'path'    => '>xhr:duplicate',
                            'data'    => [
                                'call' => $callXPack
@@ -78,7 +79,7 @@ class Main extends \Controller
                            'title'   => 'Дублировать',
                            'content' => '<div class="icon"></div>'
                        ]),
-                       'DELETE_BUTTON'      => $this->c('\std\ui button:view', [
+                       'DELETE_BUTTON'    => $this->c('\std\ui button:view', [
                            'path'    => '>xhr:delete',
                            'data'    => [
                                'call' => $callXPack
@@ -87,17 +88,16 @@ class Main extends \Controller
                            'title'   => 'Удалить',
                            'content' => '<div class="icon"></div>'
                        ]),
-                       'SHOW_OUTPUT_BUTTON' => $this->c('\std\ui button:view', [
-                           'path'    => '>xhr:showOutput',
-                           'data'    => [
+                       'OUTPUT_BUTTON'    => $this->c('\std\ui button:view', [
+                           'path'  => '>xhr:showOutput',
+                           'data'  => [
                                'call' => $callXPack
                            ],
-                           'class'   => 'show_output_button ' . ($outputCallId == $call->id ? 'pressed' : ''),
-                           'attrs'   => [
+                           'class' => 'output_button ' . ($outputCallId == $call->id ? 'pressed' : ''),
+                           'attrs' => [
                                'call_id' => $call->id
                            ],
-                           'title'   => 'Показать последний ответ',
-                           'content' => '<div class="icon"></div>'
+                           'icon'  => 'fa fa-angle-double-right'
                        ])
                    ]);
 

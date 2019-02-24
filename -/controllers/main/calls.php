@@ -28,7 +28,8 @@ class Calls extends \Controller
                 'items_id_attr'  => 'call_id',
                 'path'           => '>xhr:rearrange',
                 'plugin_options' => [
-                    'distance' => 20
+                    'distance' => 20,
+                    'appendTo' => '.call_draggable_container'
                 ]
             ]);
 

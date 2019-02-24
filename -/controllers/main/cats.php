@@ -15,21 +15,22 @@ class Cats extends \Controller
 
         $v->assign([
                        'CONTENT' => $this->c('\std\ui\tree~:view|' . $this->_nodeId(), [
-                           'default'          => [
+                           'default'           => [
                                'query_builder' => '>app:getQueryBuilder'
                            ],
-                           'node_control'     => [
+                           'node_control'      => [
                                '>node:view',
                                [
                                    'cat'         => '%model',
                                    'root_cat_id' => $rootNode->id
                                ]
                            ],
-                           'root_node_id'     => $rootNode->id,
-                           'selected_node_id' => $this->s('~:selected_cat_id'),
-                           'movable'          => true,
-                           'sortable'         => true,
-                           'droppable'        => [
+                           'root_node_id'      => $rootNode->id,
+                           'root_node_visible' => false,
+                           'selected_node_id'  => $this->s('~:selected_cat_id'),
+                           'movable'           => true,
+                           'sortable'          => true,
+                           'droppable'         => [
                                'call' => [
                                    'accept'         => $this->_selector('@calls:. .call'),
                                    'source_id_attr' => 'call_id',
@@ -40,7 +41,7 @@ class Cats extends \Controller
                                    ]
                                ]
                            ],
-                           'permissions'      => $this->_module()->namespace . ':~'
+                           'permissions'       => $this->_module()->namespace . ':~'
                        ])
                    ]);
 

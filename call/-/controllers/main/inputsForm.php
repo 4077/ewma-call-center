@@ -9,6 +9,8 @@ class InputsForm extends \Controller
         $this->call = $this->unxpackModel('call');
 
         $this->instance_($this->call->id);
+
+        $this->dmap('|', 'confirm_call');
     }
 
     public function reload()

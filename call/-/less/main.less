@@ -1,6 +1,6 @@
 // head {
-@import "../../../../css/std/-/less/main.less";
-@import "../../../../js-jquery/ui/-/less/icons.less";
+@import "../../../../../modules-vendor/fed/css/std/-/less/main.less";
+@import "../../../../../modules-vendor/fed/js-jquery/ui/-/less/icons.less";
 
 @__nodeId__: ~"ewma_callCenter_call__main";
 // }
@@ -9,171 +9,136 @@
     @buttonSize: 28px;
 
     position: relative;
-
-    transition: height .2s;
+    display: flex;
 
     > input {
         position: relative;
-        z-index: 3;
+        z-index: 10;
         background-color: #EFEFEF;
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
         border-radius: 3px;
     }
 
-    .call_button {
-        .__button;
-        position: relative;
+    > .call {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
-        padding: 0;
-        margin: 0;
-        min-width: 100px;
-        float: none;
+        > .call_button {
+            .__button;
+            float: none;
 
-        .content {
             position: relative;
-            display: flex;
-            align-items: center;
-            margin-right: 5px;
 
-            .name {
-                flex-grow: 1;
-                text-align: left;
+            padding: 0;
+            margin: 0;
+            min-width: 220px;
 
-                .txt {
-                    padding: 8px 5px 7px;
-                }
-            }
-
-            .cron_schedule {
-                padding: 8px 10px 7px;
-                color: #B0B0B0;
-            }
-
-            .async {
-                padding: 8px 5px 7px;
-                color: #B0B0B0;
-            }
-
-            .envs {
+            .content {
+                position: relative;
                 display: flex;
+                align-items: center;
+                margin-right: 5px;
 
-                .env {
-                    margin: 3px;
+                .name {
+                    flex-grow: 1;
+                    text-align: left;
+
+                    .txt {
+                        padding: 8px 5px 7px;
+                    }
+                }
+
+                .cron_schedule {
+                    padding: 8px 10px 7px;
                     color: #B0B0B0;
+                }
 
-                    &.allowed {
-                        color: #008FD6;
+                .async {
+                    padding: 8px 5px 7px;
+                    color: #B0B0B0;
+                }
+
+                .envs {
+                    display: flex;
+
+                    .env {
+                        margin: 3px;
+                        color: #B0B0B0;
+
+                        &.allowed {
+                            color: #008FD6;
+                        }
                     }
                 }
             }
-        }
 
-        .buttons {
-            display: none;
-            position: absolute;
-            top: -1px;
-            right: -@buttonSize * 4;
-            z-index: 2;
-            border-radius: 0 3px 3px 0;
+            .buttons {
+                display: none;
+                position: absolute;
+                top: -1px;
+                right: -1px; //-@buttonSize * 4;
+                z-index: 2;
+                border-radius: 0 3px 3px 0;
 
-            .button {
-                cursor: pointer;
-                float: left;
-                width: @buttonSize;
-                height: @buttonSize;
-                border-radius: 3px;
-
-                .icon {
+                .button {
+                    cursor: pointer;
                     float: left;
-                    margin: (@buttonSize - 16px) / 2;
-                    width: 16px;
-                    height: 16px;
-                    background: url("images/icons_ffffff.png") 16px 16px;
-                }
+                    width: @buttonSize;
+                    height: @buttonSize;
 
-                &.rename {
+                    &:last-child {
+                        border-radius: 0 3px 3px 0;
+                    }
 
                     .icon {
-                        .ui-icon-pencil;
+                        float: left;
+                        margin: (@buttonSize - 16px) / 2;
+                        width: 16px;
+                        height: 16px;
+                        background: url("images/icons_ffffff.png") 16px 16px;
+                    }
+
+                    &.rename {
+
+                        .icon {
+                            .ui-icon-pencil;
+                        }
+                    }
+
+                    &.settings {
+
+                        .icon {
+                            .ui-icon-gear;
+                        }
+                    }
+
+                    &.delete {
+
+                        .icon {
+                            .ui-icon-trash;
+                        }
+                    }
+
+                    &.duplicate {
+
+                        .icon {
+                            .ui-icon-copy;
+                        }
                     }
                 }
-
-                &.settings {
-
-                    .icon {
-                        .ui-icon-gear;
-                    }
-                }
-
-                &.delete {
-
-                    .icon {
-                        .ui-icon-trash;
-                    }
-                }
-
-                &.duplicate {
-
-                    .icon {
-                        .ui-icon-copy;
-                    }
-                }
-            }
-        }
-
-        &.blue {
-
-            .buttons {
-                .__gradient(#5BA7D9, #559AC8);
-                .__border(#559AC8);
-
-                .button {
-
-                    &.hover {
-                        background-color: #6CB0D9;
-                    }
-                }
-            }
-        }
-
-        &.red {
-
-            .buttons {
-                .__gradient(#FC4D34, #D8422D);
-                .__border(#D8422D);
-
-                .button {
-
-                    &.hover {
-                        background-color: #FF6242;
-                    }
-                }
-            }
-        }
-
-        &.hover {
-
-            .buttons {
-                display: block;
             }
 
             &.blue {
 
-                .cron_schedule {
-                    color: #BCF8FF;
-                }
+                .buttons {
+                    .__gradient(#5BA7D9, #559AC8);
+                    .__border(#559AC8);
 
-                .async {
-                    color: #BCF8FF;
-                }
+                    .button {
 
-                .envs {
-
-                    .env {
-                        color: #BCF8FF;
-
-                        &.allowed {
-                            color: #AFFFA2;
+                        &.hover {
+                            background-color: #6CB0D9;
                         }
                     }
                 }
@@ -181,47 +146,319 @@
 
             &.red {
 
-                .cron_schedule {
-                    color: #FFF0CB;
+                .buttons {
+                    .__gradient(#FC4D34, #D8422D);
+                    .__border(#D8422D);
+
+                    .button {
+
+                        &.hover {
+                            background-color: #FF6242;
+                        }
+                    }
+                }
+            }
+
+            &.hover {
+
+                .buttons {
+                    display: block;
                 }
 
+                &.blue {
 
-                .async {
-                    color: #FFF0CB;
+                    .cron_schedule {
+                        color: #BCF8FF;
+                    }
+
+                    .async {
+                        color: #BCF8FF;
+                    }
+
+                    .envs {
+
+                        .env {
+                            color: #BCF8FF;
+
+                            &.allowed {
+                                color: #AFFFA2;
+                            }
+                        }
+                    }
                 }
 
-                .envs {
+                &.red {
 
-                    .env {
-                        color: #FFD7D7;
+                    .cron_schedule {
+                        color: #FFF0CB;
+                    }
 
-                        &.allowed {
-                            color: #EDFF00;
+
+                    .async {
+                        color: #FFF0CB;
+                    }
+
+                    .envs {
+
+                        .env {
+                            color: #FFD7D7;
+
+                            &.allowed {
+                                color: #EDFF00;
+                            }
                         }
                     }
                 }
             }
         }
+
+        > .settings {
+            margin: 1px 0;
+            border: 1px solid #DCDCDC;
+            border-radius: 3px;
+            padding: 3px;
+            background-color: #FFF;
+
+            .path {
+                position: relative;
+
+                .txt {
+                    padding: 7px 5px;
+                    color: #8070BA;
+
+                    &.empty {
+                        color: #E0E0E0;
+                    }
+                }
+
+                input {
+                    position: relative;
+                    z-index: 3;
+                    background-color: #8070BA;
+                    color: #FFFFFF;
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
+                    border-radius: 3px;
+                }
+            }
+
+            .data {
+                padding: 5px 5px;
+                overflow: auto;
+
+            }
+
+            > .buttons {
+                margin: 3px 3px 6px;
+
+                @buttonSize: 22px;
+
+                .button {
+                    cursor: pointer;
+                    float: left;
+                    margin: 2px;
+                    width: @buttonSize;
+                    height: @buttonSize;
+                    border-radius: 3px;
+                    color: #404040;
+                    text-align: center;
+
+                    .__gradient(#F9F9F9, #E4E4E4);
+                    .__border(#DDDDDD);
+
+                    .icon {
+                        float: left;
+                        margin: (@buttonSize - 16px) / 2;
+                        width: 16px;
+                        height: 16px;
+                        background: url("images/icons_bbbbbb.png") 16px 16px;
+                    }
+
+                    &.hover {
+                        background-color: #6CB0D9;
+                    }
+
+                    &.require_confirmation {
+
+                        .icon {
+                            .ui-icon-alert;
+                        }
+
+                        &.hover {
+                            .__gradient(#FF7575, #FF5050);
+                            .__border(#D04646);
+
+                            .icon {
+                                background-image: url("images/icons_ffffff.png");
+                            }
+                        }
+
+                        &.pressed {
+                            .__gradient(#FF5050, #FF7575);
+                            .__border(#D04646);
+
+                            .icon {
+                                background-image: url("images/icons_ffffff.png");
+                            }
+
+                            &.hover {
+                                .__gradient(#FF9497, #FFB0AE);
+                                .__border(#D08787);
+
+                                .icon {
+                                    background-image: url("images/icons_ffffff.png");
+                                }
+                            }
+                        }
+                    }
+
+                    &.cron {
+                        width: auto;
+                        height: auto;
+                        padding: 5px 5px 4px;
+
+                        .icon {
+                            .ui-icon-alert;
+                        }
+
+                        &.hover {
+                            .__gradient(#D9D9D9 #C4C4C4);
+                            .__border(#BBBBBB);
+                        }
+
+                        &.pressed {
+                            .__gradient(#E1FFD6, #75D2FF);
+                            .__border(#6BADFD);
+                            color: #103D92;
+
+                            &.hover {
+                                .__gradient(#F2FFEB, #A0E0FF);
+                                .__border(#82BCFD);
+                            }
+                        }
+                    }
+
+                    &.async {
+                        width: auto;
+                        height: auto;
+                        padding: 5px 5px 4px;
+
+                        .icon {
+                            .ui-icon-alert;
+                        }
+
+                        &.hover {
+                            .__gradient(#D9D9D9 #C4C4C4);
+                            .__border(#BBBBBB);
+                        }
+
+                        &.pressed {
+                            .__gradient(#FFEAD6, #FF75F4);
+                            .__border(#DE78D6);
+                            color: #9A008E;
+
+                            &.hover {
+                                .__gradient(#FFF0E6, #FF9FF8);
+                                .__border(#DE8DD6);
+                            }
+                        }
+                    }
+
+                    &.envs {
+                        width: auto;
+                        height: auto;
+                        padding: 5px 5px 4px;
+
+                        .icon {
+                            .ui-icon-alert;
+                        }
+
+                        &.hover {
+                            .__gradient(#D9D9D9 #C4C4C4);
+                            .__border(#BBBBBB);
+                        }
+
+                        &.pressed {
+                            .__gradient(#FFED7E, #FFAC15);
+                            .__border(#FF7B22);
+                            color: #A70000;
+
+                            &.hover {
+                                .__gradient(#FFF5A1, #FFC23E);
+                                .__border(#FF9039);
+                            }
+                        }
+                    }
+                }
+            }
+
+            > .cron {
+                display: none;
+                position: relative;
+                background-color: #E5E5E5;
+                border-radius: 3px;
+
+                .txt {
+                    padding: 7px 5px;
+                    color: #606060;
+
+                    &.empty {
+                        color: #E0E0E0;
+                    }
+                }
+
+                input {
+                    position: relative;
+                    z-index: 3;
+                    background-color: #F0F0F0;
+                    color: #151515;
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
+                    border-radius: 3px;
+                }
+            }
+
+            > .envs {
+                display: none;
+                position: relative;
+                background-color: #E5E5E5;
+                border-radius: 3px;
+
+                .txt {
+                    padding: 7px 5px;
+                    color: #606060;
+
+                    &.empty {
+                        color: #E0E0E0;
+                    }
+                }
+
+                input {
+                    position: relative;
+                    z-index: 3;
+                    background-color: #F0F0F0;
+                    color: #151515;
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
+                    border-radius: 3px;
+                }
+            }
+        }
     }
 
-    .show_output_button {
-        @buttonSize: 28px;
-
+    .output_button {
         cursor: pointer;
-        position: absolute;
-        right: -@buttonSize - 10px;
-        width: @buttonSize;
-        height: @buttonSize;
+        width: 40px;
+        height: 30px;
         border-radius: 3px;
 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-shrink: 0;
+        flex-grow: 1;
+
         .icon {
-            float: left;
-            margin: (@buttonSize - 16px) / 2;
-            width: 16px;
-            height: 16px;
-            background: url("images/icons_454545.png") 16px 16px;
-            .ui-icon-document;
             opacity: 0.2;
+            font-size: 16px;
         }
 
         &.hover {
@@ -235,234 +472,6 @@
 
             .icon {
                 opacity: 1;
-            }
-        }
-    }
-
-    > .settings {
-        margin: 1px 0;
-        border: 1px solid #DCDCDC;
-        border-radius: 3px;
-        padding: 3px;
-        background-color: #FFF;
-
-        .path {
-            position: relative;
-
-            .txt {
-                padding: 7px 5px;
-                color: #8070BA;
-
-                &.empty {
-                    color: #E0E0E0;
-                }
-            }
-
-            input {
-                position: relative;
-                z-index: 3;
-                background-color: #8070BA;
-                color: #FFFFFF;
-                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
-                border-radius: 3px;
-            }
-        }
-
-        .data {
-            padding: 5px 5px;
-        }
-
-        > .buttons {
-            margin: 3px 3px 6px;
-
-            @buttonSize: 22px;
-
-            .button {
-                cursor: pointer;
-                float: left;
-                margin: 2px;
-                width: @buttonSize;
-                height: @buttonSize;
-                border-radius: 3px;
-                color: #404040;
-                text-align: center;
-
-                .__gradient(#F9F9F9, #E4E4E4);
-                .__border(#DDDDDD);
-
-                .icon {
-                    float: left;
-                    margin: (@buttonSize - 16px) / 2;
-                    width: 16px;
-                    height: 16px;
-                    background: url("images/icons_bbbbbb.png") 16px 16px;
-                }
-
-                &.hover {
-                    background-color: #6CB0D9;
-                }
-
-                &.require_confirmation {
-
-                    .icon {
-                        .ui-icon-alert;
-                    }
-
-                    &.hover {
-                        .__gradient(#FF7575, #FF5050);
-                        .__border(#D04646);
-
-                        .icon {
-                            background-image: url("images/icons_ffffff.png");
-                        }
-                    }
-
-                    &.pressed {
-                        .__gradient(#FF5050, #FF7575);
-                        .__border(#D04646);
-
-                        .icon {
-                            background-image: url("images/icons_ffffff.png");
-                        }
-
-                        &.hover {
-                            .__gradient(#FF9497, #FFB0AE);
-                            .__border(#D08787);
-
-                            .icon {
-                                background-image: url("images/icons_ffffff.png");
-                            }
-                        }
-                    }
-                }
-
-                &.cron {
-                    width: auto;
-                    height: auto;
-                    padding: 5px 5px 4px;
-
-                    .icon {
-                        .ui-icon-alert;
-                    }
-
-                    &.hover {
-                        .__gradient(#D9D9D9 #C4C4C4);
-                        .__border(#BBBBBB);
-                    }
-
-                    &.pressed {
-                        .__gradient(#E1FFD6, #75D2FF);
-                        .__border(#6BADFD);
-                        color: #103D92;
-
-                        &.hover {
-                            .__gradient(#F2FFEB, #A0E0FF);
-                            .__border(#82BCFD);
-                        }
-                    }
-                }
-
-                &.async {
-                    width: auto;
-                    height: auto;
-                    padding: 5px 5px 4px;
-
-                    .icon {
-                        .ui-icon-alert;
-                    }
-
-                    &.hover {
-                        .__gradient(#D9D9D9 #C4C4C4);
-                        .__border(#BBBBBB);
-                    }
-
-                    &.pressed {
-                        .__gradient(#FFEAD6, #FF75F4);
-                        .__border(#DE78D6);
-                        color: #9A008E;
-
-                        &.hover {
-                            .__gradient(#FFF0E6, #FF9FF8);
-                            .__border(#DE8DD6);
-                        }
-                    }
-                }
-
-                &.envs {
-                    width: auto;
-                    height: auto;
-                    padding: 5px 5px 4px;
-
-                    .icon {
-                        .ui-icon-alert;
-                    }
-
-                    &.hover {
-                        .__gradient(#D9D9D9 #C4C4C4);
-                        .__border(#BBBBBB);
-                    }
-
-                    &.pressed {
-                        .__gradient(#FFED7E, #FFAC15);
-                        .__border(#FF7B22);
-                        color: #A70000;
-
-                        &.hover {
-                            .__gradient(#FFF5A1, #FFC23E);
-                            .__border(#FF9039);
-                        }
-                    }
-                }
-            }
-        }
-
-        > .cron {
-            display: none;
-            position: relative;
-            background-color: #E5E5E5;
-            border-radius: 3px;
-
-            .txt {
-                padding: 7px 5px;
-                color: #606060;
-
-                &.empty {
-                    color: #E0E0E0;
-                }
-            }
-
-            input {
-                position: relative;
-                z-index: 3;
-                background-color: #F0F0F0;
-                color: #151515;
-                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
-                border-radius: 3px;
-            }
-        }
-
-        > .envs {
-            display: none;
-            position: relative;
-            background-color: #E5E5E5;
-            border-radius: 3px;
-
-            .txt {
-                padding: 7px 5px;
-                color: #606060;
-
-                &.empty {
-                    color: #E0E0E0;
-                }
-            }
-
-            input {
-                position: relative;
-                z-index: 3;
-                background-color: #F0F0F0;
-                color: #151515;
-                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
-                border-radius: 3px;
             }
         }
     }
