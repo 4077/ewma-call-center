@@ -56,6 +56,43 @@ var __nodeNs__ = "ewma_callCenter";
                     });
                 }, 400);
             });
+
+            //
+            //
+            //
+
+            $(".ewma_callCenter__main_cats_cp", $w).droppable({
+                accept:      ".std_ui_tree__main[instance='ewma_callCenter__main_cats'] .nodes", //, .ewma_callCenter__main_calls .call",
+                activeClass: 'droppable_active',
+                hoverClass:  'droppable_hover',
+                tolerance:   'pointer',
+
+                drop: function (e, ui) {
+                    droppableBlock = true;
+
+                    var draggable = ui.draggable;
+
+                    if (draggable.hasClass("nodes")) {
+                        var nodeId = draggable.attr("node_id");
+
+                        w.r('moveCatToRoot', {
+                            cat_id: nodeId
+                        });
+                    }
+
+                    /*if (draggable.hasClass("call")) {
+                        var callId = draggable.attr("call_id");
+
+                        w.r('moveCallToRoot', {
+                            call_id: callId
+                        });
+                    }*/
+
+                    setTimeout(function () {
+                        droppableBlock = false;
+                    }, 0);
+                }
+            });
         }
     });
 })(__nodeNs__, __nodeId__);

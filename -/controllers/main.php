@@ -63,7 +63,9 @@ class Main extends \Controller
             '.r'          => [
                 'updateCallsWidth'  => $this->_p('>xhr:updateCallsWidth'),
                 'updateCatsScroll'  => $this->_p('>xhr:updateCatsScroll'),
-                'updateCallsScroll' => $this->_p('>xhr:updateCallsScroll')
+                'updateCallsScroll' => $this->_p('>xhr:updateCallsScroll'),
+                'moveCatToRoot'     => $this->_p('>xhr:moveCatToRoot'),
+                'moveCallToRoot'    => $this->_p('>xhr:moveCallToRoot')
             ],
             'catsScroll'  => $s['cats_scroll'],
             'callsScroll' => ap($s, 'calls_scroll_by_cat/' . $s['selected_cat_id']) ?: [0, 0]
