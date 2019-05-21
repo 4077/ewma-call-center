@@ -121,7 +121,8 @@ class Xhr extends \Controller
             'pluginOptions' => [
                 'title'     => 'Данные для вызова ' . $this->getCallName($call),
                 'resizable' => 'false'
-            ]
+            ],
+            'class'         => 'padding'
         ]);
     }
 
